@@ -2,10 +2,10 @@
 
 import numpy as np
 
-class SimpleLinearRegression:
+class LinearRegression:
     
     """
-    Simple linear regression using gradient descent.
+    Linear regression using gradient descent.
     """
     
     def __init__(self):
@@ -24,7 +24,6 @@ class SimpleLinearRegression:
         
         m = y.size  
         cost = 0
-
         cost = np.sum(np.power((np.dot(X,theta) - y),2))/(2*m)
         
         return cost
@@ -55,13 +54,17 @@ class SimpleLinearRegression:
         Fit the training data.
         
         Input:
-        X.shape: (m,).
-        y.shape: (m,).
         alpha: learning rate.
         num_iters: number of iterations.
         """
         
-        X=np.stack([np.ones(X.size), X], axis=1)
+        # For multivariate linear regression.
+        try:
+            X=np.c_[np.ones(X.shape[0]), X]
+            self.theta = np.zeros(X.shape[1])
+        # For simple linear regression.
+        except:
+            X=np.stack([np.ones(X.size), X], axis=1)
         
         theta, theta0_history, theta1_history, cost_history = self.gradient_descent(X,y,alpha,num_iters)
         self.theta = theta
@@ -72,13 +75,7 @@ class SimpleLinearRegression:
     def predict(self,X):
         """
         Predict using calculated theta.
-        
-        Input:
-        X.shape: (m,).
-        
-        Output:
-        y.size: m
         """
-        y_pred = np.dot(np.stack([np.ones(X.size), X], axis=1), self.theta)
+        y_pred = np.dot(np.c_[np.ones(X.shape[0]), X], self.theta)
         
         return y_pred
