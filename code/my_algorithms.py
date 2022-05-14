@@ -31,7 +31,9 @@ class LinearRegression:
     def gradient_descent(self, X, y, alpha, num_iters):
         """
         Performs gradient descent to learn `theta`. Updates theta by taking `num_iters`
-        gradient steps with learning rate `alpha`.        
+        gradient steps with learning rate `alpha`.
+        
+        The first two thetas are stored for simple linear regression plots.
         """
         
         m = y.size
