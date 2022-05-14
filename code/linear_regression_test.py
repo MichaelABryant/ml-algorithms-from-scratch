@@ -10,9 +10,11 @@ X = np.linspace(0,100,100)
 delta = np.random.normal(-2,3,size=(100,))
 y = .4*X + 3 + delta
 
-# Create an instance of SimpleLinearRegression and fit training data.
+# Create an instance of LinearRegression and fit training data.
 lr = LinearRegression()
 lr.fit(X,y)
+
+# Create predictions with trained model.
 y_pred = lr.predict(X)
 
 # Plot actual against predicted values.
@@ -54,9 +56,11 @@ X = np.c_[X1,X2]
 delta = np.random.normal(-2,3,size=(100,))
 y = -5*X1 + 3*X2 + 6 + delta
 
-# Create an instance of SimpleLinearRegression and fit training data.
+# Create an instance of LinearRegression and fit training data.
 lr = LinearRegression()
 lr.fit(X,y)
+
+# Create predictions with trained model.
 y_pred = lr.predict(X)
 
 # Plot actual against predicted values.
