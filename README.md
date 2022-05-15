@@ -1,4 +1,4 @@
-# Machine Learning Algorithms From Scratch in Python
+# Machine Learning Algorithms From Scratch
 
 ## Algorithms added
 * Linear regression (using gradient descent)
